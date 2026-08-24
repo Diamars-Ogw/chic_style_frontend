@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Instagram, MessageCircle, Music2, Facebook, Users, Heart } from 'lucide-react';
-import { APP_NAME } from '../../lib/constants';
+import { APP_NAME, FALLBACK_WHATSAPP_NUMBER } from '../../lib/constants';
 import { useSettings } from '../../hooks/useSettings';
 import { buildWhatsAppLink, generalContactMessage } from '../../lib/whatsapp';
 
 export function Footer() {
   const { settings } = useSettings();
-  const whatsappLink = settings ? buildWhatsAppLink(settings.whatsappNumber, generalContactMessage()) : '#';
+  const whatsappLink = buildWhatsAppLink(settings?.whatsappNumber || FALLBACK_WHATSAPP_NUMBER, generalContactMessage());
 
   const socials = [
     settings?.instagram && { href: settings.instagram, icon: Instagram, label: 'Instagram' },

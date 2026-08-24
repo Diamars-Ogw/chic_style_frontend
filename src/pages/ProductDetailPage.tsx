@@ -6,6 +6,7 @@ import { useSettings } from '../hooks/useSettings';
 import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { formatPrice, getDiscountPercentage, cn } from '../lib/utils';
 import { buildWhatsAppLink, productOrderMessage } from '../lib/whatsapp';
+import { FALLBACK_WHATSAPP_NUMBER } from '../lib/constants';
 import { PageSpinner } from '../components/ui/Spinner';
 import { ProductGrid } from '../components/product/ProductGrid';
 import { useProducts } from '../hooks/useProducts';
@@ -35,7 +36,7 @@ export default function ProductDetailPage() {
 
   const discount = getDiscountPercentage(product.price, product.compareAtPrice);
   const images = product.images?.length ? product.images : [''];
-  const whatsappLink = settings ? buildWhatsAppLink(settings.whatsappNumber, productOrderMessage(product)) : '#';
+  const whatsappLink = buildWhatsAppLink(settings?.whatsappNumber || FALLBACK_WHATSAPP_NUMBER, productOrderMessage(product));
 
   return (
     <div className="pt-28 pb-20 bg-surface-50 min-h-screen">

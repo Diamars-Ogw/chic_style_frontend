@@ -4,7 +4,8 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSettings } from '../hooks/useSettings';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { api } from '../lib/api';
-import { buildWhatsAppLink, generalContactMessage } from '../lib/whatsapp';
+import { buildWhatsAppLink, generalContactMessage, contactFormFollowUpMessage } from '../lib/whatsapp';
+import { FALLBACK_WHATSAPP_NUMBER } from '../lib/constants';
 import { Spinner } from '../components/ui/Spinner';
 
 export default function ContactPage() {
@@ -17,7 +18,7 @@ export default function ContactPage() {
   const [sent, setSent] = useState(false);
   const [error, setError] = useState('');
 
-  const whatsappLink = settings ? buildWhatsAppLink(settings.whatsappNumber, generalContactMessage()) : '#';
+  const whatsappLink = buildWhatsAppLink(settings?.whatsappNumber || FALLBACK_WHATSAPP_NUMBER, generalContactMessage());
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -27,6 +28,13 @@ export default function ContactPage() {
     try {
       await api.post('/api/contact', { name, contact, message });
       setSent(true);
+      // Le message est enregistré côté site ET envoyé directement sur WhatsApp,
+      // pour qu'Ophélia le voie tout de suite sans attendre de consulter l'admin.
+      const followUpLink = buildWhatsAppLink(
+        settings?.whatsappNumber || FALLBACK_WHATSAPP_NUMBER,
+        contactFormFollowUpMessage(name, message)
+      );
+      window.open(followUpLink, '_blank');
       setName('');
       setContact('');
       setMessage('');
@@ -68,8 +76,8 @@ export default function ContactPage() {
                   </div>
                   <h3 className="text-xl font-display font-semibold text-surface-900 mb-2">Message bien reçu !</h3>
                   <p className="text-surface-500 max-w-sm mx-auto mb-6">
-                    Merci, je reviens vers toi très vite. Pour une réponse encore plus rapide,
-                    tu peux aussi m'écrire directement sur WhatsApp.
+                    Ton message a été envoyé, et WhatsApp vient de s'ouvrir dans un nouvel onglet
+                    pour qu'Ophélia le voie tout de suite — il ne te reste plus qu'à appuyer sur "Envoyer" là-bas.
                   </p>
                   <button onClick={() => setSent(false)} className="text-brand-600 font-semibold text-sm hover:underline">
                     Envoyer un autre message

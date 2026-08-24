@@ -19,3 +19,7 @@ export function sheinLinkMessage(): string {
 export function generalContactMessage(): string {
   return `Bonjour ! Je viens du site Chic Style et j'aimerais avoir quelques informations 😊`;
 }
+
+export function contactFormFollowUpMessage(name: string, message: string): string {
+  return `Bonjour, je m'appelle ${name}. Je viens de vous laisser un message sur le site Chic Style :\n\n"${message}"\n\nJe me permets de vous écrire ici aussi 😊`;
+}

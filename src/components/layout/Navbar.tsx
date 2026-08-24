@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, MessageCircle } from 'lucide-react';
-import { APP_NAME } from '../../lib/constants';
+import { APP_NAME, FALLBACK_WHATSAPP_NUMBER } from '../../lib/constants';
 import { cn } from '../../lib/utils';
 import { useSettings } from '../../hooks/useSettings';
 import { buildWhatsAppLink, generalContactMessage } from '../../lib/whatsapp';
@@ -32,7 +32,7 @@ export function Navbar() {
   ];
 
   const isTransparent = isHome && !scrolled && !mobileOpen;
-  const whatsappLink = settings ? buildWhatsAppLink(settings.whatsappNumber, generalContactMessage()) : '#';
+  const whatsappLink = buildWhatsAppLink(settings?.whatsappNumber || FALLBACK_WHATSAPP_NUMBER, generalContactMessage());
 
   return (
     <header

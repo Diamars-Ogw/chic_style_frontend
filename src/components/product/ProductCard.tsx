@@ -5,6 +5,7 @@ import { formatPrice, getDiscountPercentage, cn } from '../../lib/utils';
 import { useState } from 'react';
 import { useSettings } from '../../hooks/useSettings';
 import { buildWhatsAppLink, productOrderMessage } from '../../lib/whatsapp';
+import { FALLBACK_WHATSAPP_NUMBER } from '../../lib/constants';
 
 interface ProductCardProps {
   product: Product;
@@ -21,8 +22,8 @@ export function ProductCard({ product, index = 0 }: ProductCardProps) {
   const handleOrder = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
-    if (!settings) return;
-    window.open(buildWhatsAppLink(settings.whatsappNumber, productOrderMessage(product)), '_blank');
+    const number = settings?.whatsappNumber || FALLBACK_WHATSAPP_NUMBER;
+    window.open(buildWhatsAppLink(number, productOrderMessage(product)), '_blank');
   };
 
   return (

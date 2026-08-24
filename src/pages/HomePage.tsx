@@ -6,6 +6,7 @@ import { useSettings } from '../hooks/useSettings';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { ProductGrid } from '../components/product/ProductGrid';
 import { buildWhatsAppLink, sheinLinkMessage } from '../lib/whatsapp';
+import { FALLBACK_WHATSAPP_NUMBER } from '../lib/constants';
 
 export default function HomePage() {
   useDocumentTitle();
@@ -13,11 +14,12 @@ export default function HomePage() {
   const { products, loading } = useProducts({ featured: true });
   const { products: recentProducts, loading: loadingRecent } = useProducts();
 
-  const whatsappNumber = settings?.whatsappNumber || '';
-  const heroWhatsappLink = whatsappNumber
-    ? buildWhatsAppLink(whatsappNumber, 'Bonjour ! Je découvre votre site et j\u2019aimerais en savoir plus 😊')
-    : '#';
-  const sheinWhatsappLink = whatsappNumber ? buildWhatsAppLink(whatsappNumber, sheinLinkMessage()) : '#';
+  const whatsappNumber = settings?.whatsappNumber || FALLBACK_WHATSAPP_NUMBER;
+  const heroWhatsappLink = buildWhatsAppLink(
+    whatsappNumber,
+    'Bonjour ! Je découvre votre site et j\u2019aimerais en savoir plus 😊'
+  );
+  const sheinWhatsappLink = buildWhatsAppLink(whatsappNumber, sheinLinkMessage());
 
   return (
     <div>

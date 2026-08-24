@@ -3,11 +3,12 @@ import { useDocumentTitle } from '../hooks/useDocumentTitle';
 import { useSettings } from '../hooks/useSettings';
 import { AnimatedSection } from '../components/ui/AnimatedSection';
 import { buildWhatsAppLink, generalContactMessage } from '../lib/whatsapp';
+import { FALLBACK_WHATSAPP_NUMBER } from '../lib/constants';
 
 export default function AboutPage() {
   useDocumentTitle('À propos');
   const { settings } = useSettings();
-  const whatsappLink = settings ? buildWhatsAppLink(settings.whatsappNumber, generalContactMessage()) : '#';
+  const whatsappLink = buildWhatsAppLink(settings?.whatsappNumber || FALLBACK_WHATSAPP_NUMBER, generalContactMessage());
 
   return (
     <div className="pt-28 pb-24 bg-surface-50 min-h-screen">
