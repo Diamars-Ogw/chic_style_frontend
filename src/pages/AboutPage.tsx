@@ -22,13 +22,12 @@ export default function AboutPage() {
 
         <div className="grid md:grid-cols-2 gap-14 items-center mb-20">
           <AnimatedSection animation="slide-in-left">
-            <div className="relative max-w-sm mx-auto md:mx-0">
-              <div className="absolute -inset-4 bg-gradient-to-br from-brand-200 to-accent-200 rounded-[2rem] -rotate-3" />
-              <img
-                src="/brand/ophelia.jpg"
-                alt={settings?.ownerName || 'La fondatrice'}
-                className="relative w-full aspect-[4/5] object-cover rounded-[2rem] shadow-2xl"
-              />
+            <div className="max-w-sm mx-auto md:mx-0">
+              <div className="rounded-[2rem] bg-gradient-to-br from-brand-200 to-accent-200 p-6 shadow-sm">
+                <div className="text-surface-700 text-lg leading-relaxed font-medium">
+                  {settings?.ownerName || 'Dahounto Ophélia'}
+                </div>
+              </div>
             </div>
           </AnimatedSection>
           <AnimatedSection animation="slide-in-right">
@@ -37,7 +36,8 @@ export default function AboutPage() {
             </h2>
             <p className="text-surface-600 leading-relaxed mb-4">
               {settings?.ownerBio ||
-                "Passionnée de mode et titulaire d'une licence professionnelle en journalisme, j'ai lancé Chic Style pour permettre à mes clientes de s'habiller stylé sans le stress des commandes en ligne."}
+                "Passionnée de mode et titulaire d'une licence professionnelle en journalisme, j'ai lancé Chic Style pour permettre à mes clientes de s'habiller stylé sans le stress des commandes en ligne."
+              }
             </p>
             <p className="text-surface-600 leading-relaxed">
               Que tu choisisses un article déjà en catalogue ou que tu m'envoies un lien trouvé sur SHEIN,
@@ -56,7 +56,7 @@ export default function AboutPage() {
             href={whatsappLink}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-700 active:scale-[0.98] transition-all shadow-xl shadow-brand-500/25"
+            className="inline-flex items-center gap-2 px-8 py-4 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-700 active:scale-[0.98] transition-all shadow-xl shadow-brand-500/20"
           >
             <MessageCircle className="w-5 h-5" />
             M'écrire sur WhatsApp
