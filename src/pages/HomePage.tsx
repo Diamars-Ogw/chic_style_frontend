@@ -43,7 +43,7 @@ export default function HomePage() {
 
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 sm:pt-28 pb-16 w-full">
           <div className="max-w-xl">
-            <span className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-brand-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider mb-5 sm:mb-6 animate-fade-in-down">
+            <span className="inline-flex items-center gap-2 px-3.5 sm:px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-brand-200 text-[11px] sm:text-xs font-semibold uppercase tracking-wider">
               <Heart className="w-3.5 h-3.5" />
               {settings?.shopName || 'Chic Style'} · Groupe Shein & Temu
             </span>
@@ -57,7 +57,7 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 animate-fade-in-up stagger-3 opacity-0">
               <Link
                 to="/boutique"
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-700 active:scale-[0.98] transition-all shadow-xl shadow-brand-600/30 text-sm sm:text-base"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-brand-600 text-white font-semibold rounded-full hover:bg-brand-700 active:scale-[0.98] transition-all"
               >
                 <ShoppingBag className="w-4.5 h-4.5" />
                 Voir la boutique
@@ -66,7 +66,7 @@ export default function HomePage() {
                 href={heroWhatsappLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 active:scale-[0.98] transition-all text-sm sm:text-base"
+                className="inline-flex items-center justify-center gap-2 px-6 sm:px-7 py-3.5 bg-white/10 backdrop-blur-sm text-white font-semibold rounded-full border border-white/20 hover:bg-white/20 active:scale-[0.98] transition-all"
               >
                 <MessageCircle className="w-4.5 h-4.5" />
                 Discuter sur WhatsApp
@@ -79,17 +79,7 @@ export default function HomePage() {
       {/* SECTION PERSONNELLE */}
       <section className="py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-14 items-center">
-            <AnimatedSection animation="slide-in-left">
-              <div className="relative max-w-sm mx-auto md:mx-0">
-                <div className="absolute -inset-4 bg-gradient-to-br from-brand-200 to-accent-200 rounded-[2rem] rotate-3" />
-                <img
-                  src="/brand/ophelia.jpg"
-                  alt={settings?.ownerName || 'La fondatrice de Chic Style'}
-                  className="relative w-full aspect-[4/5] object-cover rounded-[2rem] shadow-2xl"
-                />
-              </div>
-            </AnimatedSection>
+          <div className="max-w-3xl mx-auto">
             <AnimatedSection animation="slide-in-right">
               <span className="inline-block text-brand-600 text-sm font-semibold uppercase tracking-wider mb-3">
                 Derrière {settings?.shopName || 'Chic Style'}
@@ -99,7 +89,8 @@ export default function HomePage() {
               </h2>
               <p className="text-surface-600 text-lg leading-relaxed mb-6">
                 {settings?.ownerBio ||
-                  "Passionnée de mode et titulaire d'une licence professionnelle en journalisme, j'ai lancé Chic Style pour permettre à mes clientes de s'habiller stylé sans le stress des commandes en ligne. Je m'occupe de tout, de la sélection à la livraison, avec la même rigueur et le même sérieux que dans mon métier."}
+                  "Passionnée de mode et titulaire d'une licence professionnelle en journalisme, j'ai lancé Chic Style pour permettre à mes clientes de s'habiller stylé sans le stress des commandes en ligne."
+                }
               </p>
               <div className="flex items-center gap-3 text-surface-500">
                 <div className="w-11 h-11 rounded-full bg-brand-50 flex items-center justify-center">
