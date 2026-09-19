@@ -22,12 +22,6 @@ export default function AboutPage() {
 
         <div className="grid md:grid-cols-2 gap-14 items-center mb-20">
           <AnimatedSection animation="slide-in-left">
-            <div className="flex items-center justify-center h-full min-h-[220px]">
-              <div className="w-full max-w-[520px] rounded-[2rem] bg-[#f6d7e1] px-8 py-6 shadow-[0_10px_20px_rgba(18,18,18,0.08)] text-center">
-                <span className="block text-[2rem] sm:text-[2.4rem] font-display font-semibold text-surface-900 leading-none">
-                  {settings?.ownerName || 'Dahounto Ophélia'}
-                </span>
-              </div>
             </div>
           </AnimatedSection>
 
