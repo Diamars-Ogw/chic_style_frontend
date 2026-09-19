@@ -20,16 +20,7 @@ export default function AboutPage() {
           </h1>
         </AnimatedSection>
 
-        <div className="grid md:grid-cols-2 gap-14 items-center mb-20">
-          <AnimatedSection animation="slide-in-left">
-            <div className="max-w-sm mx-auto md:mx-0">
-              <div className="rounded-[2rem] bg-gradient-to-br from-brand-200 to-accent-200 p-6 shadow-sm">
-                <div className="text-surface-700 text-lg leading-relaxed font-medium">
-                  {settings?.ownerName || 'Dahounto Ophélia'}
-                </div>
-              </div>
-            </div>
-          </AnimatedSection>
+        <div className="max-w-3xl mx-auto mb-20">
           <AnimatedSection animation="slide-in-right">
             <h2 className="text-2xl font-display font-semibold text-surface-900 mb-4">
               {settings?.ownerName || 'Dahounto Ophélia'}
